@@ -20,10 +20,11 @@ st.sidebar.markdown("""
 """)
 
 # 3. Load the Model
+# 3. Load the Model
 @st.cache_resource
 def load_my_model():
-    # Loading the .keras model saved from your notebook
-    model_path = os.path.join(os.getcwd(), 'final_model.keras')
+    # التحميل المباشر باستخدام الاسم الجديد اللي رفعته
+    model_path = 'final_model.keras'
     model = tf.keras.models.load_model(model_path)
     return model
 
@@ -31,7 +32,8 @@ try:
     model = load_my_model()
     st.sidebar.success("Model loaded successfully ✅")
 except Exception as e:
-    st.sidebar.error("Error: my_model.keras not found in the directory.")
+    # السطر ده هيعرفنا بكرة الصبح لو فيه مشكلة حقيقية
+    st.sidebar.error(f"Error loading model: {e}")
     st.stop()
 
 # 4. Image Uploading
