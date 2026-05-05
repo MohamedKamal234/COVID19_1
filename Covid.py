@@ -23,7 +23,7 @@ st.sidebar.markdown("""
 @st.cache_resource
 def load_my_model():
     # Loading the .keras model saved from your notebook
-    model_path = os.path.join(os.getcwd(), 'my_model.keras')
+    model_path = os.path.join(os.getcwd(), 'final_model.keras')
     model = tf.keras.models.load_model(model_path)
     return model
 
