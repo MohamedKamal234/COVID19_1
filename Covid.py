@@ -2,6 +2,7 @@ import streamlit as st
 import tensorflow as tf
 from PIL import Image
 import numpy as np
+import os
 
 # 1. Page Configuration
 st.set_page_config(page_title="Covid-19 Detection", layout="centered")
@@ -22,7 +23,8 @@ st.sidebar.markdown("""
 @st.cache_resource
 def load_my_model():
     # Loading the .keras model saved from your notebook
-    model = tf.keras.models.load_model('my_model.keras')
+    model_path = os.path.join(os.getcwd(), 'my_model.keras')
+    model = tf.keras.models.load_model(model_path)
     return model
 
 try:
